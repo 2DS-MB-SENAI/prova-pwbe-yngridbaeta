@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_list_or_404
+from .models import Medico, Consulta
 
-# Create your views here.
+
+#listar todos os medicos cadastrados
+def listar_medicos(request):
+    medicos = []
+
+    medicos = Medico.objects.all()
+    
+

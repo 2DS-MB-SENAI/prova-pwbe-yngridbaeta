@@ -19,8 +19,14 @@ class Medico(models.Model):
     crm = models.CharField(max_length=30, unique=True)
     email = models.EmailField(blank=True)
 
+    def __str__(self):
+        return self.nome
+
 class Consulta(models.Model):
     pacientes = models.CharField(max_length=100)
     data = models.DateTimeField()
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     status = models.CharField(choices=STATUS, max_length=30)
+
+    def __str__(self):
+        return self.pacientes
