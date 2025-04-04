@@ -12,9 +12,17 @@
     <ul>
         {% for medico in medicos %}
         <li>
-            {{ medico.nome }}
+            {{ medico.nome }} - {{ medico.especialidade }}
         </li>
         {% endfor %}
     </ul>
+
+    <h3>Buscar por Especialidade</h3>
+    <form method="GET" action="{% url 'listar_medicos' %}">
+        {% csrf_token %}
+        <label for="especialidade">Especialidade:</label>
+        <input type="text" id="especialidade" name="especialidade" value="{{ request.GET.especialidade }}">
+        <button type="submit">Buscar</button>
+    </form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_list_or_404
 from .models import Medico, Consulta
-from .forms import ConsultaForm, BuscarConsultaForm
+from .forms import ConsultaForm, BuscarConsultaForm, MedicoForm
 from django.contrib import messages
 
 
@@ -9,8 +9,12 @@ def index(request):
 
 #listar todos os medicos cadastrados
 def listar_medicos(request):
+    especialidade = request.GET.get('especialidade', '')
 
-    medicos = Medico.objects.all()
+    if especialidade:
+        medicos =Medico.objects.filter(especialidade=especialidade)
+    else: 
+        medicos = Medico.objects.all()
     
     return render(request, 'clinica/listar_medicos.html', {'medicos': medicos})
 
