@@ -8,7 +8,7 @@ def listar_medicos(request):
 
     medicos = Medico.objects.all()
     
-    return render(request, 'listar_medicos.html', {'medicos': medicos})
+    return render(request, 'clinica/listar_medicos.html', {'medicos': medicos})
 
 def criar_consulta(request):
     if request.method == 'POST':
@@ -17,4 +17,4 @@ def criar_consulta(request):
             form.save()
     else:
         form = ConsultaForm()
-    return render(request, 'form_consulta.html', {'form': form})
+    return render(request, 'clinica/form_consulta.html', {'form': form})
