@@ -4,7 +4,8 @@ from django.db import models
 ESPECIALIDADES = [
     ('Cirurgiao', 'Cirurgiao'), 
     ('Oftalmologista', 'Oftalmologista'),
-    ('Enfermeiro', 'Enfermeiro')
+    ('Enfermeiro', 'Enfermeiro'),
+    ('CAR', 'Cadiologista')
 ]
 
 STATUS = [
