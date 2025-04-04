@@ -4,8 +4,9 @@ from .models import Medico, Consulta
 
 #listar todos os medicos cadastrados
 def listar_medicos(request):
-    medicos = []
+
 
     medicos = Medico.objects.all()
     
+    return render(request, 'listar_medicos.html', {'medicos': medicos})
 
