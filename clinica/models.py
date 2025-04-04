@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinLengthValidator, RegexValidator
 
 
 ESPECIALIDADES = [
@@ -14,10 +15,12 @@ STATUS = [
     ('cancelado', 'cancelado')
 ]
 
+crm_verificacao = RegexValidator(r'^\d{2}/\d{5}$', 'XX/XXXXX')
+
 class Medico(models.Model):
-    nome = models.CharField(max_length=50, )
+    nome = models.CharField(max_length=50, validators=[MinLengthValidator(5)])
     especialidade = models.CharField(choices=ESPECIALIDADES, max_length=30)
-    crm = models.CharField(max_length=30, unique=True)
+    crm = models.CharField(max_length=30, unique=True, validators=[crm_verificacao])
     email = models.EmailField(blank=True)
 
     def __str__(self):
